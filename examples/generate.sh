@@ -127,6 +127,12 @@ kustomize build "${SOURCE_DIR}/../config" | envsubst > "${COMPONENTS_AWS_GENERAT
 echo "Generated ${COMPONENTS_AWS_GENERATED_FILE}"
 
 # Generate a single provider components file.
+# error comes when tring to run the below customize files.
+# need to fix whats wrong with the generated files provider-components-{aws, cluster-api}.yaml
+# https://blog.stack-labs.com/code/kustomize-101/ --> try to understand kustomize better.
+# `kustomize` is a sub-command of kubectl.
+# https://github.com/kubernetes-sigs/cluster-api-provider-aws/issues/1532
+
 kustomize build "${SOURCE_DIR}/provider-components" | envsubst > "${PROVIDER_COMPONENTS_GENERATED_FILE}"
 echo "Generated ${PROVIDER_COMPONENTS_GENERATED_FILE}"
 echo "WARNING: ${PROVIDER_COMPONENTS_GENERATED_FILE} includes AWS credentials"
